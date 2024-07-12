@@ -1,16 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EyeDentify</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="description" content="A Dataset for Pupil Diameter Estimation based on Webcam Images.">
+  <meta name="keywords" content="EyeDentify, eye, Eye, Eye Dataset, Pupil, Pupil Size, Pupil Dataset, Pupil SIze Dataset, Gaze, Gaze Dataset">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EyeDentify: A Dataset for Pupil Diameter Estimation based on Webcam Images</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- Image take from: -->
+  <!-- https://unsplash.com/photos/selective-focus-of-blue-eyed-person-UbJMy92p8wk --> 
+  <!-- Free to use under the Unsplash License -->
+  <link rel="icon" href="./static/images/eye-modified.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>EyeDentify</h1>
-        <img src="https://images.squarespace-cdn.com/content/v1/56ab42ac1a5203d43357179c/1524581119774-BEF09BX3CIO472B6193L/Blinking.gif?format=1000w" alt="Development in Progress">
-        <p>Development in progress</p>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://vijulshah.github.io/supereyedentify/">
+            SuperEyeDentify
+          </a>
+          <a class="navbar-item" href="https://vijulshah.github.io/eyedentify/">
+            EyeDentify
+          </a>
+        </div>
+      </div>
     </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">EyeDentify: A Dataset for Pupil Diameter Estimation based on Webcam Images</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/vijulshah">Vijul Shah</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/ko-watanabe">Ko Watanabe</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://brian-moser.github.io/">Brian B. Moser</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://agd.cs.uni-kl.de/">Andreas Dengel</a><sup>1,2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>German Research Center for Artificial Intelligence (DFKI), Germany,</span>
+            <span class="author-block"><sup>2</sup>RPTU Kaiserslautern-Landau, Germany</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                    <a href="https://arxiv.org/pdf/xxxx"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                    </a>
+                </span> -->
+                <span class="link-block">
+                    <a href="https://arxiv.org/abs/xxxx"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                    </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                    <a href="https://github.com/vijulshah/eyedentify"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- <span class="link-block">
+                    <a href="https://huggingface.co/spaces/frgfm/torch-cam">
+                    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue" alt="Huggingface Spaces">
+                    </a>
+                </span> -->
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                    <a href="https://drive.google.com/drive/folders/1okaTISq6ic02cRT8P5x4ojAp2YiNQInp?usp=drive_link"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                    </a>
+                </span>
+            </div>
+            <!-- HF Space Link. -->
+            <!-- <div class="publication-links">
+                <span class="link-block">
+                    <a href="https://huggingface.co/spaces/vijulshah/eyedentify"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span>🤗 Hugging Face | Spaces</span>
+                    </a>
+                </span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this work, we introduce <span class="dnerf">EyeDentify</span>, a dataset specifically designed for pupil diameter estimation based on webcam images. <span class="dnerf">EyeDentify</span> addresses the lack of available datasets for pupil diameter estimation, a crucial domain for understanding physiological and psychological states traditionally dominated by highly specialized sensor systems such as Tobii. Unlike these advanced sensor systems and associated costs, webcam images are more commonly found in practice. Yet, deep learning models that can estimate pupil diameters using standard webcam data are scarce. By providing a dataset of cropped eye images alongside corresponding pupil diameter information, <span class="dnerf">EyeDentify</span> enables the development and refinement of models designed specifically for less-equipped environments, democratizing pupil diameter estimation by making it more accessible and broadly applicable, which in turn contributes to multiple domains of understanding human activity and supporting healthcare
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Datasets Comparision</h2>
+            <table class="table2">
+                <caption>Table 1. Comparison of related datasets for eye monitoring. While most datasets have gaze coordinates [1, 2, 3, 4, 5, 6], there is a significant gap in pupil diameter informed [7, 8] datasets.</caption>
+                <thead>
+                    <tr>
+                        <th>Dataset</th>
+                        <th>Participants</th>
+                        <th>Amount of data [frame]</th>
+                        <th>Public</th>
+                        <th>Gaze Coordinates</th>
+                        <th>Pupil Diameter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MAEB <a href="#">[1]</a></td>
+                        <td>20</td>
+                        <td>1,440</td>
+                        <td class="color-red">✗</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-red">✗</td>
+                    </tr>
+                    <tr>
+                        <td>MPIIFaceGaze <a href="#">[2]</a></td>
+                        <td>15</td>
+                        <td>213,659</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-red">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Dembinsky et al. <a href="#">[3]</a></td>
+                        <td>19</td>
+                        <td>648,000</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-red">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Gaze360 <a href="#">[4]</a></td>
+                        <td>238</td>
+                        <td>172,000</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-red">✗</td>
+                    </tr>
+                    <tr>
+                        <td>ETH-XGaze <a href="#">[5]</a></td>
+                        <td>110</td>
+                        <td>1,083,492</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-red">✗</td>
+                    </tr>
+                    <tr>
+                        <td>VideoGazeSpeech <a href="#">[6]</a></td>
+                        <td>unknown</td>
+                        <td>35,231</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-red">✗</td>
+                    </tr>
+                    <tr>
+                        <td>Ricciuti et al. <a href="#">[7]</a></td>
+                        <td>17</td>
+                        <td>20,400</td>
+                        <td class="color-red">✗</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                    </tr>
+                    <tr>
+                        <td>Caya et al. <a href="#">[8]</a></td>
+                        <td>16</td>
+                        <td>unknown</td>
+                        <td class="color-red">✗</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EyeDentify (ours)</strong></td>
+                        <td><strong>51</strong></td>
+                        <td><strong>212,073</strong></td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                        <td class="color-green">✓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div>
+            <table class="table1">
+                <caption>Table 2. 5-fold cross-validation of ResNet-18 and ResNet-50, evaluated separately for left and right eyes. Each group contains 10 randomly selected participants: 5 for validation and 5 for testing. The remaining participants were used to train the models. ResNet18 performs the best for the pupil diameter estimation regarding mean values on the test partitions, whereas ResNet-50 shows a lower standard deviation, indicating more robustness for varied test partitions.
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Eye</th>
+                        <th>Model</th>
+                        <th>Validation<br>MAE ↓</th>
+                        <th>Test<br>MAE ↓</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">Left</td>
+                        <td>ResNet-18</td>
+                        <td>0.0837 ± 0.0135</td>
+                        <td><strong>0.1340 ± 0.0196</strong></td>
+                    </tr>
+                    <tr>
+                        <td>ResNet-50</td>
+                        <td>0.1001 ± 0.0197</td>
+                        <td>0.1426 ± 0.0167</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Right</td>
+                        <td>ResNet-18</td>
+                        <td>0.1054 ± 0.0173</td>
+                        <td><strong>0.1403 ± 0.0328</strong></td>
+                    </tr>
+                    <tr>
+                        <td>ResNet-50</td>
+                        <td>0.1089 ± 0.0204</td>
+                        <td>0.1588 ± 0.0203</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+          <div class="hero-body">
+            <!-- <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+              <img src="./static/images/cam_results.jpg">
+            <!-- </video> -->
+            <h2 class="subtitle has-text-centered">
+              <span class="dnerf">Figure 1. Class Activation Map (CAM) visualizations of ResNet50 and ResNet18 for a test participant's left and right eyes viewing different display colors on a monitor. True and Predicted values indicate the original and estimated pupil diameters of the left and right eyes in millimeters.</span>
+            </h2>
+          </div>
+        </div>
+    </section>
+
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+            <p>
+                This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+            </p>
+            <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a> which was adopted from the Nerfies project page. You are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, they just ask that you link back to their page in the footer.
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
