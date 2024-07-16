@@ -100,7 +100,27 @@ def pd_ds_paths(data_path, session_frames=None, force_creation=False, return_df=
 
         # Set the columns to ensure the correct header order
         combined_df.columns = desired_columns
-        print("combined_df = ", len(combined_df))
+        print("combined_df before droping nan = ", len(combined_df))
+
+        # combined_df.to_csv(os.path.join(data_path, "dataset_with_nan.csv"), index=False)
+        # print("dataset_with_nan saved")
+
+        # Create a mask to identify rows with NaN values
+        nan_mask = combined_df.isna().any(axis=1)
+
+        # NOTE: The NaN values found - indicate that tobii was not able to capture / record one or more of the metric values ('desired column'). So don't include that frames in our dataset.
+        # ALTERNATIVELY: you can take mean of the values per session for each participant and then run this dataset / dataloader creation. We don't provide code for taking means for each session for each participant. We just drop the NaN rows and move on since they are comparatively less than the amount of the entire dataset.
+
+        # Create a new DataFrame with rows that contain NaN values
+        df_with_nan = combined_df[nan_mask]
+        print("df_with_nan = ", len(df_with_nan))
+
+        nan_indices = df_with_nan.index.tolist()
+        print("indices of rows with NaN values:", nan_indices)
+
+        # Create a DataFrame without rows containing NaN values
+        combined_df = combined_df.dropna(axis=0, how="any")
+        print("combined_df after droping nan = ", len(combined_df))
 
         # Check if the output CSV already exists
         if os.path.exists(output_csv_path):
@@ -109,7 +129,7 @@ def pd_ds_paths(data_path, session_frames=None, force_creation=False, return_df=
 
         # Write the combined data to the output CSV
         combined_df.to_csv(output_csv_path, index=False)
-        print("combined dataset saved to: ", output_csv_path)
+        print("cleaned and combined dataset saved to: ", output_csv_path)
 
     if return_df:
         return combined_df, output_folder
