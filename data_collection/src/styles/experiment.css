@@ -1,0 +1,129 @@
+.start-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.video-container {
+  position: fixed;
+  right: 5%;
+  top: 12%;
+  transform: translateY(-50%);
+  width: 200px;
+  text-align: center;
+  padding: 20px;
+}
+
+.next-page-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 50vh;
+  align-items: end;
+}
+
+video {
+  width: 300px;
+}
+
+p {
+  font-size: 22px;
+}
+
+.red-bg-div {
+  margin: 0;
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: red;
+  color: white;
+  font-size: 25px;
+}
+
+.blue-bg-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: blue;
+  color: white;
+  font-size: 25px;
+}
+
+.yellow-bg-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+}
+
+.green-bg-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: green;
+  color: white;
+  font-size: 25px;
+}
+
+.gray-bg-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: gray;
+  color: white;
+  font-size: 25px;
+}
+
+.gray-bg-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background: gray;
+  color: black;
+  font-size: 25px;
+}
+
+.black-bg-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background: black;
+  filter: brightness(0%);
+  color: white;
+  font-size: 25px;
+}
+
+.download-button-container {
+  width: 100%;
+}

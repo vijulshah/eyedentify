@@ -1,0 +1,60 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-direction: 'column';
+}
+
+.btn-disable {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  flex-direction: 'column';
+}
+
+p {
+  font-size: 20px;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.about-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 50vh;
+  align-items: end;
+}
+
+.experiment-div {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  font-size: 25px;
+}
