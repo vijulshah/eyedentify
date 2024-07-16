@@ -1,10 +1,10 @@
 # EyeDentify
 
-<!-- <span class="link-block">
+<span class="link-block">
   <a href="https://huggingface.co/spaces/vijulshah/eyedentify">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue" alt="Huggingface Spaces">
   </a>
-</span> -->
+</span>
 
 This is the repository that contains source code for the [EyeDentify website](https://vijulshah.github.io/eyedentify/).
 

@@ -1,0 +1,24 @@
+seed: 42
+
+dataloader_configs:
+  dataloader_path: "data/eyes/left_eyes/test_dataloader.pth"
+  # if null, it will select the first batch. if -1, it will select all
+  selected_batch_index: -1
+  # if null, it will select the first sample from the selected_batch_index. if -1, it will select all
+  samples_per_batch: -1
+
+model_configs:
+  model_path: "scripts/mlruns/0/4a1ac8189fc14b11b5ea40c2e26fffc4/artifacts/trained_model/best_model.pt"
+  registered_model_name: "ResNet18"
+  num_classes: 1
+
+loss_function_configs:
+  loss_function_name: "L1Loss"
+  # reduction: "mean"
+  # delta: 0.10
+
+test_configs:
+  eval_metrics: []
+  results_path: "inference_n_interpretation/log_results"
+  viz_methods: ["line"]
+  
