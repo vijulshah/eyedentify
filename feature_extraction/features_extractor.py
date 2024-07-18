@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 
 class FeaturesExtractor:
 
-    def __init__(self, extraction_library="facexlib", blink_detection=False, upscale=1):
+    def __init__(self, extraction_library="mediapipe", blink_detection=True, upscale=1):
         self.blink_detection = blink_detection
         self.extraction_library = extraction_library
         self.upscale = int(upscale)
