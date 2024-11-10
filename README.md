@@ -1,13 +1,10 @@
 # Webcam Based Pupil Diameter Estimation ✨
 
-
 <div style="display: flex; align-items: center; gap: 20px;">
-    <!-- Fancy link with an icon -->
     <a href="https://drive.google.com/drive/folders/1okaTISq6ic02cRT8P5x4ojAp2YiNQInp?usp=drive_link" style="text-decoration: none; background: linear-gradient(to right, #5D5D5D 64%, #0274B4 46%); padding-left: 5px; padding-right: 5px; border-radius: 3px;">
     <span style="font-size: 12px; color: white;">🗂️ EyeDentify Dataset</span>
 </a>
     |
-    <!-- Hugging Face Spaces badge -->
     <a href="https://huggingface.co/spaces/vijulshah/eyedentify">
         <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue" alt="Huggingface Spaces" style="margin-top: 5px;">
     </a>
@@ -21,9 +18,6 @@ It contains code for:
 1) Creation of Datasets: `EyeDentify` & `EyeDentify++`.
 2) Training Pipelines for Pupil Diameter Estimation.
 3) A Link to the Development of WebApp: `PupilSense`
-
-<!-- This repository contains everything you need to replicate and understand our end-to-end pipeline, including dataset creation, processing, and model training. -->
-<!-- 📜  -->
 
 ## Table of Contents 📒 
 - [Getting Started](#getting-started)
@@ -42,8 +36,8 @@ It contains code for:
 # Getting Started 🚀
 Clone the repository:
 ```bash
-git clone https://github.com/vijulshah/webcam-based-pupil-diameter-estimation.git
-cd webcam-based-pupil-diameter-estimation
+git clone https://github.com/vijulshah/eyedentify.git
+cd eyedentify
 ```
 
 # Data Collection App: `Chemeleon View` 🖥️
