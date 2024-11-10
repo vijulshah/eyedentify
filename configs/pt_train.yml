@@ -1,0 +1,114 @@
+seed: 42
+
+run_training_pipeline: true
+run_inference_pipeline: false
+
+dataset_configs:
+  data_path: "local/data/EyeDentifyPro/Wo_SR/iris/left_iris/wo_outlines"
+  dataset_paths_registry: "pd_ds_paths_individual" # any from: ["pd_ds_paths_individual", "pd_ds_paths_combinations"]
+  strategy: "cross_validation"
+  split_fold: "fold1"
+  # left_out_participants_for_val: [1] # only for cross_validation strategy
+  # left_out_participants_for_test: [1] # only for cross_validation strategy
+  dataset_paths_registry_params:
+    force_creation: true # true or false
+    # start and end of session frames to select for each participant. Keep empty or null for selecting all frames # -> only for pd_ds_paths_individual i.e individual paths
+    session_frames: null # [0, 20] or keep null to incule all data 
+    # selected_feature: "left_eye"  # only for pd_ds_paths_combinations i.e combined paths
+    # selected_datasets: ["GFPGAN_x2", "SRResNet_x2"] # only for pd_ds_paths_combinations
+    # ignored_datasets: [] # only for pd_ds_paths_combinations
+  normalize: false
+  # train_size: 0.7 # only for strategies other than cross_validation
+  # val_size: 0.3   # only for strategies other than cross_validation
+  dataset_registry: "PupilDiameter"
+  dataset_registry_params:
+    selected_targets: ["left_pupil"] # any from: ["left_pupil", "right_pupil", pupil_diameter (avg of left & right)]
+    # img_size: [64, 64] # eg:[32, 64], [64, 128]
+    img_mode: "RGB" # any from: ["RGB", "YCbCr", "HSV", "LAB"] (modes which conserve 3 channels)
+    augment: false # dataloader augment's by the given augmentation configurations
+    augmentation_configs:
+      rotations: [-5, 5] # randomly rotating images -5 or +5 degrees
+
+dataloader_configs:
+  batch_size: 64         # batch size will be set per gpu / cpu
+  num_workers: 2
+  pin_memory: true
+
+model_configs:
+  registered_model_name: "EyeDentifyNet"
+  # upsample: 4
+  # pretrained: false
+  # pad_img: false
+  # use_regression_head: true
+  # modify_network: false
+  # upscale: 1
+  # pretrained_path: "/netscratch/shah/pupil-size-estimation-with-super-resolution/registrations/GazeTRHybrid/GazeTR-H-ETH.pt"
+  num_classes: 1 # should be same as the number of selected_targets
+
+optimizer_configs:
+  optimizer_name: "Adam" # SGD, Adam, AdamW, any...
+  lr: 0.001
+  # weight_decay: 0.0001
+
+loss_function_configs:
+  loss_function_name: "HuberLoss" # "L1Loss"
+  # initial_alpha: 0.8 # 0.60
+  # initial_beta: 0.5 # 2.5
+  # reduction: "mean"
+  # delta: 0.10
+
+# lr_scheduler_configs:
+  # scheduler_name: "StepLR"
+  # step_size: 10
+  # gamma: 0.2
+  # warmup_configs:
+  #   multiplier: 1
+  #   total_epoch: 3
+
+train_test_configs:
+  eval_metrics: ["mae","mape"]
+  eval_metrics_average: null
+  max_steps: null         # max steps per epoch
+  epochs: 1
+  # results_path: "inference_n_interpretation/log_results"
+  viz_methods: ["line"]
+  
+# early_stopping_configs:
+#   tracking_metric: "mape" # early stop based on the specified metric's prev and current score
+#   patience: 100          # early stop based on the number of speficied epochs (i.e patience)
+
+checkpointing_configs:
+  resume: false
+  run_id: null            # give mlflow existing run id when resume = true to resume logging (optional)
+  checkpoint_path: null
+  save_every_n_epoch: null
+  tracking_metric: "loss" # track best model based on the specified metric scores
+
+# xai_configs:
+  # viz_path: "inference_n_interpretation/logs_xai_vizualizations"
+  # methods: [
+    # "IntegratedGradients",
+    # "Saliency",
+    # "InputXGradient", 
+    # "GuidedBackprop",
+    # "Deconvolution",
+    # "CAM",
+    # "ScoreCAM",
+    # "SSCAM",
+    # "ISCAM",
+    # "GradCAM",
+    # "GradCAMpp",
+    # "SmoothGradCAMpp",
+    # "XGradCAM",
+    # "LayerCAM",
+  # ] 
+# any from: ["CAM", "ScoreCAM", "SSCAM", "ISCAM", "GradCAM", "GradCAMpp", "SmoothGradCAMpp", "XGradCAM", "LayerCAM"] # see here: https://frgfm.github.io/torch-cam/methods.html
+  # OR
+  # methods: ["InputXGradient"] # any from: ["InputXGradient", "Saliency"] # see here: https://captum.ai/api/
+  # OR
+  # methods: ["attention_visualization"] # valid only for transformer based models else it will be skipped
+
+use_ddp: false
+dist_params:
+  backend: nccl
+  

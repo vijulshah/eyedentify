@@ -13,6 +13,7 @@ if [[ $SLURM_LOCALID == 0 ]]; then
   # If encountered issue with opencv lib, use one of the following fixes:
 
   # Fix-1.
+  # pip install pytorch-lightning
   # pip install tqdm
   # pip install PyYAML
   # pip install numpy
@@ -25,10 +26,16 @@ if [[ $SLURM_LOCALID == 0 ]]; then
   # pip install torch
   # pip install captum
   # pip install evaluate
+  # pip install basicsr
   # pip install facexlib
+  # pip install realesrgan
   # pip install opencv_python
+  # pip install cmake
+  # pip install dlib
   # pip install einops
   # pip install transformers
+  # pip install gfpgan
+  # pip install streamlit
   # pip install mediapipe
   # pip install imutils
   # pip install scipy
@@ -43,7 +50,7 @@ if [[ $SLURM_LOCALID == 0 ]]; then
   # pip install opencv-contrib-python==4.5.5.64
   # pip install opencv-python-headless==4.5.5.64
   # pip install protobuf==3.20.*
-  pip install onnx2torch
+  # pip install onnx2torch
 
   # OR
   

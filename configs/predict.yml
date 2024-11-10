@@ -1,0 +1,49 @@
+seed: 42
+log_mlflow_params: true
+
+dataset_configs:
+  data_path: "data/EyeDentify/Wo_SR/faces"
+  selected_participants: [1]
+  dataset_registry_params:
+    img_size: null
+    selected_targets: ["left_pupil"]
+    img_mode: "RGB"
+  # image_path: "/netscratch/shah/pupil-size-estimation-with-super-resolution/data/EyeDentify/Wo_SR/eyes/left_eyes/6/1/frame_80.png"
+  # target_value: 2.6594
+  
+model_configs:
+  # model_path: "scripts/mlruns/0/64c04349c385474984e08dc6aa405ed6/artifacts/trained_model/best_model.pt"
+  registered_model_name: "ResNet18"
+  num_classes: 1
+
+loss_function_configs:
+  loss_function_name: "L1Loss"
+
+train_test_configs:
+  # results_path: "inference_n_interpretation/log_results"
+  eval_metrics: ["mape"]
+  viz_methods: ["line"]
+
+xai_configs:
+  # viz_path: "inference_n_interpretation/logs_xai_vizualizations"
+  methods: [
+    # "IntegratedGradients",
+    # "Saliency",
+    # "InputXGradient", 
+    # "GuidedBackprop",
+    # "Deconvolution",
+    "CAM",
+    # "ScoreCAM",
+    # "SSCAM",
+    # "ISCAM",
+    # "GradCAM",
+    # "GradCAMpp",
+    # "SmoothGradCAMpp",
+    # "XGradCAM",
+    # "LayerCAM",
+  ] 
+# any from: ["CAM", "ScoreCAM", "SSCAM", "ISCAM", "GradCAM", "GradCAMpp", "SmoothGradCAMpp", "XGradCAM", "LayerCAM"] # see here: https://frgfm.github.io/torch-cam/methods.html
+  # OR
+  # methods: ["InputXGradient"] # any from: ["InputXGradient", "Saliency"] # see here: https://captum.ai/api/
+  # OR
+  # methods: ["attention_visualization"] # valid only for transformer based models else it will be skipped

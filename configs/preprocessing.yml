@@ -1,5 +1,0 @@
-seed: 42
-dataset_source_dir: 'data/raw'
-dataset_destination_dir: 'data/original'
-plots_dir: 'data/data_distribution'
-selected_participants: [] # enter ids as string values

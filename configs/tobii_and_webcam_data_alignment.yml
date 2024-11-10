@@ -1,0 +1,5 @@
+seed: 42
+dataset_source_dir: 'data/EyeDentify/raw'
+dataset_destination_dir: 'data/EyeDentify/Wo_SR/original'
+plots_dir: 'data/EyeDentify/Wo_SR/data_distribution'
+selected_participants: []

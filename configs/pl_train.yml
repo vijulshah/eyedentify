@@ -1,0 +1,113 @@
+seed: 42
+log_dir: "tb_logs"
+exp_name: "ResNetCifar56_with_depth_left_iris_no_sr"
+profiler: null
+# profiler_args:
+#   skip_first: 10
+#   wait: 1
+#   warmup: 1
+#   active: 20
+
+run_training_pipeline: true
+run_inference_pipeline: false
+
+# Trainer Configurations
+pl_trainer_configs:
+  strategy: "auto"
+  accelerator: "gpu"
+  # devices: 1
+  # precision: "16-mixed" # "bf16-mixed" for cpu, "16-mixed" for gpu
+  min_epochs: 1
+  max_epochs: 50
+  num_sanity_val_steps: 0
+  log_every_n_steps: 10
+  check_val_every_n_epoch: 1
+  # limit_train_batches: 4
+  # limit_val_batches: 2
+  # limit_test_batches: 2
+  # deterministic: true
+
+dataset_configs:
+  data_path: "local/data/EyeDentifyPro/Wo_SR/iris/left_iris/wo_outlines"
+  dataset_paths_registry: "pd_ds_paths_individual"
+  strategy: "cross_validation"
+  split_fold: "fold1"
+  # left_out_participants_for_val: [1]
+  # left_out_participants_for_test: [1]
+  dataset_paths_registry_params:
+    force_creation: true
+    session_frames: null
+  normalize: false
+  dataset_registry: "PupilDiameter"
+  dataset_registry_params:
+    selected_targets: ["left_pupil"] # any from: ["left_pupil", "right_pupil"]
+    img_size: [32, 32]  # eg:[32, 64], [64, 128]
+    img_mode: "RGB"
+    augment: true
+    augmentation_configs:
+      brightness_range: [0.8, 1.2]
+      contrast_range: [0.8, 1.2]
+      saturation_range: [0.8, 1.2]
+      gaussian_blur_range: [0.3, 1.7]
+      rotations: [-5, 5] # randomly rotating images -5 or +5 degrees
+
+dataloader_configs:
+  batch_size: 2048
+  num_workers: 4
+  pin_memory: true
+
+model_configs:
+  registered_model_name: "ResNetCifar56"
+  # upsample: 1
+  # model_path: /netscratch/shah/pupil-size-estimation-with-super-resolution/scripts/tb_logs/resnet18_left_eyes_no_sr/version_9/best_model.ckpt
+  # pretrained: false
+  # pad_img: true
+  # use_regression_head: true
+  # modify_network: false
+  num_classes: 1
+
+optimizer_configs:
+  optimizer_name: "Adam"
+  lr: 0.001
+  weight_decay: 0.001
+
+loss_function_configs:
+  loss_function_name: "HuberLoss" # HuberLoss, L1Loss
+  delta: 0.01
+
+lr_scheduler_configs:
+  # scheduler_name: "StepLR"
+  # step_size: 10
+  # gamma: 0.1
+  scheduler_name: "MultiStepLR"
+  milestones: [5]
+  gamma: 0.01
+
+train_test_configs:
+  eval_metrics: ["mae","mape"]
+  # results_path: "inference_n_interpretation/log_results"
+  viz_methods: ["line"]
+
+# xai_configs:
+#   # viz_path: "inference_n_interpretation/logs_xai_vizualizations"
+#   methods: [
+#     # "IntegratedGradients",
+#     # "Saliency",
+#     # "InputXGradient", 
+#     # "GuidedBackprop",
+#     # "Deconvolution",
+#     # "CAM",
+#     # "ScoreCAM",
+#     # "SSCAM",
+#     # "ISCAM",
+#     # "GradCAM",
+#     # "GradCAMpp",
+#     # "SmoothGradCAMpp",
+#     # "XGradCAM",
+#     # "LayerCAM",
+#   ] 
+# any from: ["CAM", "ScoreCAM", "SSCAM", "ISCAM", "GradCAM", "GradCAMpp", "SmoothGradCAMpp", "XGradCAM", "LayerCAM"] # see here: https://frgfm.github.io/torch-cam/methods.html
+  # OR
+  # methods: ["InputXGradient"] # any from: ["InputXGradient", "Saliency"] # see here: https://captum.ai/api/
+  # OR
+  # methods: ["attention_visualization"] # valid only for transformer based models else it will be skipped

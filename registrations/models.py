@@ -1,60 +1,82 @@
-import sys
+import torch
 import torch.nn as nn
-import os.path as osp
 from torchvision import models
 import torch.nn.functional as F
 from registry import MODEL_REGISTRY
-
-root_path = osp.abspath(osp.join(__file__, osp.pardir, osp.pardir))
-sys.path.append(root_path)
-
-# ============================= ResNets =============================
+from registrations.ResNetVariants.CifarBasedResNets import ResNetCifar
+from registrations.ResNetVariants.ImageNetBasedResNets import ResNetImageNet
 
 
-@MODEL_REGISTRY.register()
-class ResNet18(nn.Module):
-    def __init__(self, model_args):
-        super(ResNet18, self).__init__()
-        self.num_classes = model_args.get("num_classes", 1)
-        self.resnet = models.resnet18(weights=None)
-        self.regression_head = nn.Linear(1000, self.num_classes)
-
-    def forward(self, x, masks=None):
-        # Calculate the padding dynamically based on the input size
-        height, width = x.shape[2], x.shape[3]
-        pad_height = max(0, (224 - height) // 2)
-        pad_width = max(0, (224 - width) // 2)
-
-        # Apply padding
-        x = F.pad(
-            x, (pad_width, pad_width, pad_height, pad_height), mode="constant", value=0
-        )
-        x = self.resnet(x)
-        x = self.regression_head(x)
-        return x
+# ============================= ImageNet Based ResNet Variants =============================
 
 
 @MODEL_REGISTRY.register()
-class ResNet50(nn.Module):
+class ResNet18(ResNetImageNet):
     def __init__(self, model_args):
-        super(ResNet50, self).__init__()
-        self.num_classes = model_args.get("num_classes", 1)
-        self.resnet = models.resnet50(weights=None)
-        self.regression_head = nn.Linear(1000, self.num_classes)
+        super(ResNet18, self).__init__(model_args, models.resnet18)
 
-    def forward(self, x, masks=None):
-        # Calculate the padding dynamically based on the input size
-        height, width = x.shape[2], x.shape[3]
-        pad_height = max(0, (224 - height) // 2)
-        pad_width = max(0, (224 - width) // 2)
 
-        # Apply padding
-        x = F.pad(
-            x, (pad_width, pad_width, pad_height, pad_height), mode="constant", value=0
-        )
-        x = self.resnet(x)
-        x = self.regression_head(x)
-        return x
+@MODEL_REGISTRY.register()
+class ResNet34(ResNetImageNet):
+    def __init__(self, model_args):
+        super(ResNet34, self).__init__(model_args, models.resnet34)
+
+
+@MODEL_REGISTRY.register()
+class ResNet50(ResNetImageNet):
+    def __init__(self, model_args):
+        super(ResNet50, self).__init__(model_args, models.resnet50)
+
+
+@MODEL_REGISTRY.register()
+class ResNet101(ResNetImageNet):
+    def __init__(self, model_args):
+        super(ResNet101, self).__init__(model_args, models.resnet101)
+
+
+@MODEL_REGISTRY.register()
+class ResNet152(ResNetImageNet):
+    def __init__(self, model_args):
+        super(ResNet152, self).__init__(model_args, models.resnet152)
+
+
+# ============================= Cifar Based ResNet Variants =============================
+
+
+@MODEL_REGISTRY.register()
+class ResNetCifar20(ResNetCifar):
+    def __init__(self, model_args):
+        super(ResNetCifar20, self).__init__(model_args, num_blocks=[3, 3, 3])
+
+
+@MODEL_REGISTRY.register()
+class ResNetCifar32(ResNetCifar):
+    def __init__(self, model_args):
+        super(ResNetCifar32, self).__init__(model_args, num_blocks=[5, 5, 5])
+
+
+@MODEL_REGISTRY.register()
+class ResNetCifar44(ResNetCifar):
+    def __init__(self, model_args):
+        super(ResNetCifar44, self).__init__(model_args, num_blocks=[7, 7, 7])
+
+
+@MODEL_REGISTRY.register()
+class ResNetCifar56(ResNetCifar):
+    def __init__(self, model_args):
+        super(ResNetCifar56, self).__init__(model_args, num_blocks=[9, 9, 9])
+
+
+@MODEL_REGISTRY.register()
+class ResNetCifar110(ResNetCifar):
+    def __init__(self, model_args):
+        super(ResNetCifar110, self).__init__(model_args, num_blocks=[18, 18, 18])
+
+
+@MODEL_REGISTRY.register()
+class ResNetCifar1202(ResNetCifar):
+    def __init__(self, model_args):
+        super(ResNetCifar1202, self).__init__(model_args, num_blocks=[200, 200, 200])
 
 
 print("Registered models in MODEL_REGISTRY:", MODEL_REGISTRY.keys())
