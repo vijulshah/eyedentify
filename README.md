@@ -1,12 +1,6 @@
-# pupilsense
+# EyeDentify
 
-<!-- <span class="link-block">
-  <a href="https://huggingface.co/spaces/vijulshah/pupilsense">
-    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue" alt="Huggingface Spaces">
-  </a>
-</span> -->
-
-This is the repository that points to the source code for the creation of [EyeDentify Dataset](https://vijulshah.github.io/webcam-based-pupil-diameter-estimation/) and hosts the information regarding the [Paper on EyeDentify](https://arxiv.org/abs/2407.11204).
+This is the repository that points to the source code for the creation of [EyeDentify Dataset](https://github.com/vijulshah/eyedentify/tree/main) and hosts the information regarding the [Paper on EyeDentify](https://arxiv.org/abs/2407.11204).
 
 If `EyeDentify` helps your research or work, please cite EyeDentify.
 ``` latex
