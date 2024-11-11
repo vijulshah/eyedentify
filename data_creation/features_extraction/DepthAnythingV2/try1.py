@@ -20,9 +20,9 @@ model.load_state_dict(
 )
 model = model.to(DEVICE).eval()
 
-path = "/home/vshah/Documents/Uni/Thesis_Cluster/pupil-size-estimation-with-super-resolution/local/data/EyeDentify/Wo_SR/original/1/1/frame_01.png"
+path = "./eyedentify/local/data/EyeDentify/Wo_SR/original/1/1/frame_01.png"
 
-misc = "/home/vshah/Documents/Uni/Thesis_Cluster/pupil-size-estimation-with-super-resolution/depth_estimation/20230812_184704.jpg"
+misc = "./eyedentify/depth_estimation/20230812_184704.jpg"
 
 raw_img = cv2.imread(misc)
 depth = model.infer_image(raw_img)  # HxW raw depth map in nump

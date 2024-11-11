@@ -1,29 +1,29 @@
-# Webcam Based Pupil Diameter Estimation ✨
+# `EyeDentify`: A Webcam Based Pupil Diameter Estimation Dataset ✨
 
 <div style="display: flex; align-items: center; gap: 20px;">
     <a href="https://drive.google.com/drive/folders/1okaTISq6ic02cRT8P5x4ojAp2YiNQInp?usp=drive_link" style="text-decoration: none; background: linear-gradient(to right, #5D5D5D 64%, #0274B4 46%); padding-left: 5px; padding-right: 5px; border-radius: 3px;">
     <span style="font-size: 12px; color: white;">🗂️ EyeDentify Dataset</span>
 </a>
     |
-    <a href="https://huggingface.co/spaces/vijulshah/eyedentify">
+    <a href="https://huggingface.co/spaces/vijulshah/pupilsense">
         <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue" alt="Huggingface Spaces" style="margin-top: 5px;">
     </a>
 </div>
 
 <br>
 
-Welcome to the official repository for Webcam-Based Pupil Diameter Estimation! 
+Welcome to the official repository of the EyeDentify: A Webcam Based Pupil Diameter Estimation Dataset! 
 
 It contains code for:
-1) Creation of Datasets: `EyeDentify` & `EyeDentify++`.
+1) Creation of the Dataset: `EyeDentify`.
 2) Training Pipelines for Pupil Diameter Estimation.
-3) A Link to the Development of WebApp: `PupilSense`
+3) A link to the WebApp: `PupilSense`
 
 ## Table of Contents 📒 
 - [Getting Started](#getting-started)
 - [Project Stages](#project-stages)
   - [1. Data Collection App: `Chemeleon View`](#1-data-collection)
-  - [2. Data Creation and Processing: `EyeDentify` & `EyeDentify++`](#2-data-creation-and-processing)
+  - [2. Data Creation and Processing: `EyeDentify`](#2-data-creation-and-processing)
   - [3. Model Training and Evaluation](#3-model-training-and-evaluation)
   - [4. WebApp: `PupilSense`](#4-webapp)
 - [Citations](#🌏-citations)
@@ -53,7 +53,7 @@ Our custom-built React app, **Chemeleon View**, facilitates video data collectio
 2. Run `npm install` to install the dependencies.
 3. Start the app with `npm start`.
 
-# 2. Data Creation and Processing: `EyeDentify` & `EyeDentify++` 👀
+# 2. Data Creation and Processing: `EyeDentify` 👀
 
 This stage includes 2 parts:
 
@@ -69,10 +69,8 @@ This stage involves synchronizing webcam and Tobii data and extracting recording
     - Python File: `./data_creation/eyedentify/run_data_alignment.py`
     - Execution: `./scripts/data_creation/srun_tobii_and_webcam_data_processing.sh`
 
-#### No-SR and SR Datasets Creation
+#### Eye Cropping and Blink Detection
 
-This phase involves:
-- **Depth Map Computation** using [DepthAnythingV2](https://github.com/DepthAnything/Depth-Anything-V2) model.
 - **Eye Cropping** using [Mediapipe](https://github.com/google-ai-edge/mediapipe/blob/master/docs/solutions/face_mesh.md) landmarks for focused analysis.
 - **Blink Detection** using [Eye Aspect Ratio (EAR)](https://medium.com/analytics-vidhya/eye-aspect-ratio-ear-and-drowsiness-detector-using-dlib-a0b2c292d706) and a [pretrained ViT](https://huggingface.co/dima806/closed_eyes_image_detection) to ensure data quality.
 
@@ -118,7 +116,7 @@ You can view the app 🤗 [here](https://huggingface.co/spaces/vijulshah/eyedent
 
 ## 🌏 Citations
 
-The following are BibTeX references. The BibTeX entry requires the `url` LaTeX package.
+The following is a BibTeX reference. The BibTeX entry requires the `url` LaTeX package.
 
 If `EyeDentify` helps your research or work, please cite EyeDentify.
 ``` latex
@@ -129,21 +127,6 @@ If `EyeDentify` helps your research or work, please cite EyeDentify.
   year={2024}
 }
 ```
-
-If `EyeDentify++` helps your research or work, please cite EyeDentify++.
-``` latex
-@article{shah2024webcam,
-  title={Webcam-based Pupil Diameter Prediction Benefits from Upscaling},
-  author={Shah, Vijul and Moser, Brian B and Watanabe, Ko and Dengel, Andreas},
-  journal={arXiv preprint arXiv:2408.10397},
-  year={2024}
-}
-```
-
-<!-- If `PupilSense` helps your research or work, please cite PupilSense.<br>
-``` latex
-
-``` -->
 
 ---
 ## 📧 Contact

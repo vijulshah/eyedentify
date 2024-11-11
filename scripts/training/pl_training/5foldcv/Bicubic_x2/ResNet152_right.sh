@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define the base command
-base_command="python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/pl_training/pl_train.py \
-  --config_file=/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/pl_train.yml \
+base_command="python ./eyedentify/training/pl_training/pl_train.py \
+  --config_file=./eyedentify/configs/pl_train.yml \
   --data_path=data/EyeDentify/Wo_SR/eyes/left_eyes \
   --selected_targets left_pupil \
   --registered_model_name=ResNet18 \
@@ -19,29 +19,29 @@ for fold in {1..5}; do
 done
 
 
-python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/train.py \
-  --config_file="/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/train.yml" \
+python ./eyedentify/training/train.py \
+  --config_file="./eyedentify/configs/train.yml" \
   --data_path="data/EyeDentify/Wo_SR/eyes/right_eyes" \
   --selected_target="right_pupil" \
   --registered_model_name="ResNet152" \
   --split_fold="fold2"
 
-python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/train.py \
-  --config_file="/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/train.yml" \
+python ./eyedentify/training/train.py \
+  --config_file="./eyedentify/configs/train.yml" \
   --data_path="data/EyeDentify/Wo_SR/eyes/right_eyes" \
   --selected_target="right_pupil" \
   --registered_model_name="ResNet152" \
   --split_fold="fold3"
 
-python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/train.py \
-  --config_file="/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/train.yml" \
+python ./eyedentify/training/train.py \
+  --config_file="./eyedentify/configs/train.yml" \
   --data_path="data/EyeDentify/Wo_SR/eyes/right_eyes" \
   --selected_target="right_pupil" \
   --registered_model_name="ResNet152" \
   --split_fold="fold4"
 
-python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/train.py \
-  --config_file="/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/train.yml" \
+python ./eyedentify/training/train.py \
+  --config_file="./eyedentify/configs/train.yml" \
   --data_path="data/EyeDentify/Wo_SR/eyes/right_eyes" \
   --selected_target="right_pupil" \
   --registered_model_name="ResNet152" \

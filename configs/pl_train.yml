@@ -59,7 +59,7 @@ dataloader_configs:
 model_configs:
   registered_model_name: "ResNetCifar56"
   # upsample: 1
-  # model_path: /netscratch/shah/pupil-size-estimation-with-super-resolution/scripts/tb_logs/resnet18_left_eyes_no_sr/version_9/best_model.ckpt
+  # model_path: ./eyedentify/scripts/tb_logs/resnet18_left_eyes_no_sr/version_9/best_model.ckpt
   # pretrained: false
   # pad_img: true
   # use_regression_head: true

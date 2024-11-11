@@ -20,11 +20,11 @@ srun -K\
     --gpus-per-task=$GPUS_PER_TASK \
     --gpu-bind=none \
     --mem=$MEM \
-    --container-image=/netscratch/$USER/pupil-size-estimation-with-super-resolution/scripts/pip_dependencies_pl.sqsh \
+    --container-image=/netscratch/$USER/eyedentify/scripts/pip_dependencies_pl.sqsh \
     --container-mounts=/netscratch/$USER:/netscratch/$USER,/ds:/ds,/ds-sds:/ds-sds,"`pwd`":"`pwd`" \
     --container-workdir="`pwd`" \
     --time=01-00:00:00 \
     --output="./logs/${NOW}-${JOB_NAME}-nodes_${NODES}-tasks_${NTASKS}-cpus_${CPUS_PER_TASK}-gpus_${GPUS_PER_TASK}.log" \
-    python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/pl_training/pl_train.py \
-        --config_file="/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/pl_train.yml" \
+    python ./eyedentify/training/pl_training/pl_train.py \
+        --config_file="./eyedentify/configs/pl_train.yml" \
         --split_fold="fold1"

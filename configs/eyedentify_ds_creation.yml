@@ -13,11 +13,4 @@ feature_extraction_configs:
   # iris_configs:
   #   segmented_iris: false
   #   segmented_mask: false
-
-# create sr_configs if you need Super Resolution Dataset, else remove it.
-# sr_configs:
-#   method: "HAT" # any from: GFPGAN, SRResNet, CodeFormer, RealEsr, HAT
-#   params:
-#     upscale: 4
-    # bg_upsampler_name: "realesrgan" # realesrgan or realesrnet or anime
-    # prefered_net_in_upsampler: "RRDBNet" # RRDBNet or SRVGGNetCompact
+  

@@ -8,7 +8,7 @@ dataset_configs:
     img_size: null
     selected_targets: ["left_pupil"]
     img_mode: "RGB"
-  # image_path: "/netscratch/shah/pupil-size-estimation-with-super-resolution/data/EyeDentify/Wo_SR/eyes/left_eyes/6/1/frame_80.png"
+  # image_path: "./eyedentify/data/EyeDentify/Wo_SR/eyes/left_eyes/6/1/frame_80.png"
   # target_value: 2.6594
   
 model_configs:

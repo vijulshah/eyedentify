@@ -1,7 +1,7 @@
 #!/bin/bash
 
-base_command="python /netscratch/shah/pupil-size-estimation-with-super-resolution/training/pt_training/pt_train.py \
-  --config_file=/netscratch/shah/pupil-size-estimation-with-super-resolution/configs/pt_train.yml \
+base_command="python ./eyedentify/training/pt_training/pt_train.py \
+  --config_file=./eyedentify/configs/pt_train.yml \
   --data_path=data/EyeDentify/Wo_SR/eyes/right_eyes \
   --selected_targets right_pupil \
   --exp_name=resnet50_right_eyes_no_sr \

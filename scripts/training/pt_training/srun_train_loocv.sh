@@ -20,7 +20,7 @@ srun -K\
     --gpus-per-task=$GPUS_PER_TASK \
     --gpu-bind=none \
     --mem=$MEM \
-    --container-image=/netscratch/$USER/pupil-size-estimation-with-super-resolution/scripts/pip_dependencies_pl.sqsh \
+    --container-image=/netscratch/$USER/eyedentify/scripts/pip_dependencies_pl.sqsh \
     --container-mounts=/netscratch/$USER:/netscratch/$USER,/ds:/ds,/ds-sds:/ds-sds,"`pwd`":"`pwd`" \
     --container-workdir="`pwd`" \
     --time=02-00:00:00 \

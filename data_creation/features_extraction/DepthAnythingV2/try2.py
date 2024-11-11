@@ -8,13 +8,13 @@ import requests
 # image = Image.open(requests.get(url, stream=True).raw)
 
 path_base = (
-    "/home/vshah/Documents/Uni/Thesis_Cluster/pupil-size-estimation-with-super-resolution/local/data/EyeDentify/Wo_SR"
+    "./eyedentify/local/data/EyeDentify/Wo_SR"
 )
 path_full = path_base + "/original/1/1/frame_01.png"
 path_face = path_base + "/faces/1/1/frame_01.png"
 path_left_eye = path_base + "/eyes/left_eyes/1/1/frame_01.png"
 path_right_eye = path_base + "/eyes/right_eyes/1/1/frame_01.png"
-misc = "/home/vshah/Documents/Uni/Thesis_Cluster/pupil-size-estimation-with-super-resolution/depth_estimation/20230812_184704.jpg"
+misc = "./eyedentify/depth_estimation/20230812_184704.jpg"
 image = Image.open(path_full)
 
 image_processor = AutoImageProcessor.from_pretrained("depth-anything/Depth-Anything-V2-Small-hf")

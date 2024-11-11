@@ -42,7 +42,7 @@ model_configs:
   # use_regression_head: true
   # modify_network: false
   # upscale: 1
-  # pretrained_path: "/netscratch/shah/pupil-size-estimation-with-super-resolution/registrations/GazeTRHybrid/GazeTR-H-ETH.pt"
+  # pretrained_path: "./eyedentify/registrations/GazeTRHybrid/GazeTR-H-ETH.pt"
   num_classes: 1 # should be same as the number of selected_targets
 
 optimizer_configs:

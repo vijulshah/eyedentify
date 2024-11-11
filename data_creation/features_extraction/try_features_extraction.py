@@ -12,7 +12,7 @@ from data_creation.features_extraction.features_extractor import FeaturesExtract
 
 if __name__ == "__main__":
 
-    img_path = f"/home/vshah/Documents/Uni/Thesis_Cluster/pupil-size-estimation-with-super-resolution/local/data/EyeDentify/Wo_SR/original/1/1/frame_20.png"
+    img_path = f"./eyedentify/local/data/EyeDentify/Wo_SR/original/1/1/frame_20.png"
     print("img_path ===> ", img_path)
     image = cv2.imread(img_path)
     upscale = 1
@@ -61,7 +61,7 @@ if __name__ == "__main__":
             print("right EAR = ", result_dict["eyes"]["right_eye"]["EAR"])
             print("avg_EAR = ", result_dict["eyes"]["avg_EAR"])
 
-            output_folder = f"/home/vshah/Documents/Uni/Thesis_Cluster/pupil-size-estimation-with-super-resolution/data_creation/features_extraction/detections/{extraction_library}"
+            output_folder = f"./eyedentify/data_creation/features_extraction/detections/{extraction_library}"
             os.makedirs(output_folder, exist_ok=True)
 
             results_list = list(result_dict.keys())

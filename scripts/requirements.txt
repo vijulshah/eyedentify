@@ -10,16 +10,12 @@ scikit_learn
 torch
 captum
 evaluate
-basicsr
 facexlib
-realesrgan
 opencv_python
 cmake
 dlib
 einops
 transformers
-gfpgan
-# streamlit
 mediapipe
 imutils
 scipy
