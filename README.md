@@ -118,7 +118,7 @@ You can view the app 🤗 [here](https://huggingface.co/spaces/vijulshah/eyedent
 
 The following is a BibTeX reference. The BibTeX entry requires the `url` LaTeX package.
 
-If `EyeDentify` helps your research or work, please cite EyeDentify.
+If `EyeDentify` helps your research or work, please cite <a href="https://arxiv.org/abs/2407.11204">EyeDentify</a>.
 ``` latex
 @article{shah2024eyedentify,
   title={Eyedentify: A dataset for pupil diameter estimation based on webcam images},
