@@ -2,15 +2,14 @@ seed: 42
 
 dataset_configs:
   data_path: "local/data/EyeDentify/Wo_SR/original"
-  output_folder: "local/data/EyeDentifyDepth/Wo_SR"
+  output_folder: "local/data/EyeDentify/Wo_SR"
   selected_participants: []
 
 feature_extraction_configs:
   blink_detection: true
   upscale: 1 # 1 for Wo_SR and any from: 2, 3, 4 for W_SR
-  extraction_library: "mediapipe" # any from: "mediapipe" or "dlib" or "facexlib"
+  extraction_library: "mediapipe"
   save_features: ['eyes', 'iris'] # any from: ['iris', 'eyes', 'blinks', 'faces', 'full_imgs'] # use 'full_imgs': for SR dataset creation
   # iris_configs:
   #   segmented_iris: false
   #   segmented_mask: false
-  

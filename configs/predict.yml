@@ -2,13 +2,13 @@ seed: 42
 log_mlflow_params: true
 
 dataset_configs:
-  data_path: "data/EyeDentify/Wo_SR/faces"
+  data_path: "data/EyeDentify/Wo_SR/iris/left_eyes/wo_outlines"
   selected_participants: [1]
   dataset_registry_params:
     img_size: null
     selected_targets: ["left_pupil"]
     img_mode: "RGB"
-  # image_path: "./eyedentify/data/EyeDentify/Wo_SR/eyes/left_eyes/6/1/frame_80.png"
+  # image_path: "./webcam-based-pupil-diameter-estimation/data/EyeDentify/Wo_SR/eyes/left_eyes/6/1/frame_80.png"
   # target_value: 2.6594
   
 model_configs:
@@ -21,7 +21,7 @@ loss_function_configs:
 
 train_test_configs:
   # results_path: "inference_n_interpretation/log_results"
-  eval_metrics: ["mape"]
+  eval_metrics: ["mae","mape"]
   viz_methods: ["line"]
 
 xai_configs:

@@ -1,6 +1,6 @@
 seed: 42
 log_dir: "tb_logs"
-exp_name: "ResNetCifar56_with_depth_left_iris_no_sr"
+exp_name: "ResNet18_left_iris_no_sr"
 profiler: null
 # profiler_args:
 #   skip_first: 10
@@ -28,7 +28,7 @@ pl_trainer_configs:
   # deterministic: true
 
 dataset_configs:
-  data_path: "local/data/EyeDentifyPro/Wo_SR/iris/left_iris/wo_outlines"
+  data_path: "local/data/EyeDentify/Wo_SR/eyes/left_eyes/wo_outlines"
   dataset_paths_registry: "pd_ds_paths_individual"
   strategy: "cross_validation"
   split_fold: "fold1"
@@ -41,15 +41,15 @@ dataset_configs:
   dataset_registry: "PupilDiameter"
   dataset_registry_params:
     selected_targets: ["left_pupil"] # any from: ["left_pupil", "right_pupil"]
-    img_size: [32, 32]  # eg:[32, 64], [64, 128]
+    img_size: [32, 64]  # eg:[32, 64], [64, 128]
     img_mode: "RGB"
-    augment: true
-    augmentation_configs:
-      brightness_range: [0.8, 1.2]
-      contrast_range: [0.8, 1.2]
-      saturation_range: [0.8, 1.2]
-      gaussian_blur_range: [0.3, 1.7]
-      rotations: [-5, 5] # randomly rotating images -5 or +5 degrees
+    augment: false
+    # augmentation_configs:
+    #   brightness_range: [0.8, 1.2]
+    #   contrast_range: [0.8, 1.2]
+    #   saturation_range: [0.8, 1.2]
+    #   gaussian_blur_range: [0.3, 1.7]
+    #   rotations: [-5, 5] # randomly rotating images -5 or +5 degrees
 
 dataloader_configs:
   batch_size: 2048
@@ -59,7 +59,7 @@ dataloader_configs:
 model_configs:
   registered_model_name: "ResNetCifar56"
   # upsample: 1
-  # model_path: ./eyedentify/scripts/tb_logs/resnet18_left_eyes_no_sr/version_9/best_model.ckpt
+  # model_path: ./webcam-based-pupil-diameter-estimation/scripts/tb_logs/resnet18_left_eyes_no_sr/version_9/best_model.ckpt
   # pretrained: false
   # pad_img: true
   # use_regression_head: true
@@ -76,12 +76,12 @@ loss_function_configs:
   delta: 0.01
 
 lr_scheduler_configs:
-  # scheduler_name: "StepLR"
-  # step_size: 10
-  # gamma: 0.1
-  scheduler_name: "MultiStepLR"
-  milestones: [5]
-  gamma: 0.01
+  scheduler_name: "StepLR"
+  step_size: 10
+  gamma: 0.1
+  # scheduler_name: "MultiStepLR"
+  # milestones: [5]
+  # gamma: 0.01
 
 train_test_configs:
   eval_metrics: ["mae","mape"]

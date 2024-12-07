@@ -4,7 +4,7 @@ run_training_pipeline: true
 run_inference_pipeline: false
 
 dataset_configs:
-  data_path: "local/data/EyeDentifyPro/Wo_SR/iris/left_iris/wo_outlines"
+  data_path: "local/data/EyeDentifyPro/Wo_SR/eyes/left_iris/wo_outlines"
   dataset_paths_registry: "pd_ds_paths_individual" # any from: ["pd_ds_paths_individual", "pd_ds_paths_combinations"]
   strategy: "cross_validation"
   split_fold: "fold1"
@@ -35,14 +35,14 @@ dataloader_configs:
   pin_memory: true
 
 model_configs:
-  registered_model_name: "EyeDentifyNet"
+  registered_model_name: "ResNet18"
   # upsample: 4
   # pretrained: false
   # pad_img: false
   # use_regression_head: true
   # modify_network: false
   # upscale: 1
-  # pretrained_path: "./eyedentify/registrations/GazeTRHybrid/GazeTR-H-ETH.pt"
+  # pretrained_path: "./webcam-based-pupil-diameter-estimation/registrations/GazeTRHybrid/GazeTR-H-ETH.pt"
   num_classes: 1 # should be same as the number of selected_targets
 
 optimizer_configs:
@@ -51,16 +51,16 @@ optimizer_configs:
   # weight_decay: 0.0001
 
 loss_function_configs:
-  loss_function_name: "HuberLoss" # "L1Loss"
-  # initial_alpha: 0.8 # 0.60
-  # initial_beta: 0.5 # 2.5
+  loss_function_name: "L1Loss" 
+  # initial_alpha: 0.8
+  # initial_beta: 0.5 
   # reduction: "mean"
   # delta: 0.10
 
-# lr_scheduler_configs:
-  # scheduler_name: "StepLR"
-  # step_size: 10
-  # gamma: 0.2
+lr_scheduler_configs:
+  scheduler_name: "StepLR"
+  step_size: 10
+  gamma: 0.2
   # warmup_configs:
   #   multiplier: 1
   #   total_epoch: 3
@@ -69,7 +69,7 @@ train_test_configs:
   eval_metrics: ["mae","mape"]
   eval_metrics_average: null
   max_steps: null         # max steps per epoch
-  epochs: 1
+  epochs: 50
   # results_path: "inference_n_interpretation/log_results"
   viz_methods: ["line"]
   
@@ -108,7 +108,7 @@ checkpointing_configs:
   # OR
   # methods: ["attention_visualization"] # valid only for transformer based models else it will be skipped
 
-use_ddp: false
+use_ddp: true
 dist_params:
   backend: nccl
   
