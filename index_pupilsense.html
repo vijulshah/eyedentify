@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A Dataset for Pupil Diameter Estimation based on Webcam Images.">
+  <meta name="keywords"
+    content="EyeDentify, eye, Eye, Eye Dataset, Pupil, Pupil Size, Pupil Dataset, Pupil SIze Dataset, Gaze, Gaze Dataset">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PupilSense: A Novel Application for Webcam-Based Pupil Diameter Estimation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/eye-modified.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                PupilSense: A Novel Application for Webcam-Based Pupil Diameter Estimation
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://github.com/vijulshah">Vijul Shah</a><sup>2</sup>,</span>
+                <span class="author-block">
+                  <a href="https://ko-watanabe.github.io">Ko Watanabe</a><sup>1,2</sup>,</span>
+                <span class="author-block">
+                  <a href="https://brian-moser.github.io/">Brian B. Moser</a><sup>1,2</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://agd.cs.uni-kl.de/">Andreas Dengel</a><sup>1,2</sup>,
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>German Research Center for Artificial Intelligence (DFKI),
+                  Germany,</span>
+                <span class="author-block"><sup>2</sup>RPTU Kaiserslautern-Landau, Germany</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- <span class="link-block">
+                    <a href="https://arxiv.org/abs/2407.11204" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span> -->
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/vijulshah/webcam-based-pupil-diameter-estimation"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <!-- Dataset Link. -->
+                  <span class="link-block">
+                    <a href="https://www.kaggle.com/datasets/vijuls/PupilDiameterDatasets"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="far fa-images"></i>
+                      </span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+                </div>
+                <!-- HF Space Link. -->
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://huggingface.co/spaces/vijulshah/pupilsense"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span>🤗 Hugging Face | Spaces</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Measuring pupil diameter is vital for gaining insights into physiological and psychological states — traditionally captured by expensive, specialized equipment like Tobii eye-trackers and Pupillabs glasses. This paper presents a novel application that enables pupil diameter estimation using standard webcams, making the process accessible in everyday environments without specialized equipment. Our app estimates pupil diameters from videos and offers detailed analysis, including class activation maps, graphs of predicted left and right pupil diameters, and eye aspect ratios during blinks. This tool expands the accessibility of pupil diameter measurement, particularly in everyday settings, benefiting fields like human behavior research and healthcare. Additionally, we present a new open source dataset for pupil diameter estimation using webcam images containing cropped eye images and corresponding pupil diameter measurements.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <h2 class="title is-3">Dataset Collection</h2>
+            </div>
+            <div class="hero-body">
+              <img src="./static/images/pupilsense/data_recording_alignment.PNG">
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">
+                  Overview of a data recording and alignment flow. (Left) Data recording flow: Tobii eye-tracker records pupil diameter, and
+                  ChameleonView captures facial recordings using a webcam. Facial recordings start when the participant clicks on the button in the
+                  center. The start and end timestamp of the recording is collected in order to synchronize the data with an eye-tracker. (Right) Data
+                  alignment flow of a single recording: To synchronize the 90 frames with the 270 Tobii-captured data points, each metric column is
+                  concatenated horizontally across the 90 data points from the three unique timestamps in the Tobii-captured CSV file, followed by
+                  computing a row-wise mean.
+                </span>
+              </h2>
+            </div>
+          </div>
+        </section>
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <h2 class="title is-3">Dataset Processing</h2>
+            </div>
+            <div class="hero-body">
+              <img src="./static/images/pupilsense/crop_flow.PNG">
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">
+                  Pipeline of our data preprocessing. For face detection and landmark localization, we used Mediapipe to extract the respective
+                  cropped eye images (32x16), left and right, separately. We applied a pre-trained DepthAnythingV2 model on the entire image and
+                  cropped the depth maps around the eye regions with the help of landmarks detected from Mediapipe. Next, we applied blink detection
+                  on the cropped eyes using the Eye Aspect Ratio (EAR) and a pre-trained vision transformer for blink detection. Cropped eye images
+                  and the depth maps are then saved based on the EAR threshold and model confidence score.
+                </span>
+              </h2>
+            </div>
+          </div>
+        </section>
+        
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-3">Results</h2>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <div>
+              <table class="table1">
+                <caption>
+                  Leave one participant out cross validation (LOPOCV) of ResNet18 and ResNet50, evaluated separately for left and right
+                  eyes. We excluded one participant per training run and tested the model performance on the left-out participant. This process was
+                  repeated for all participants, with the table summarizing the mean and standard deviation of performance metrics across all runs.
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Eye</th>
+                    <th>Model</th>
+                    <th>Test<br>MAE ↓</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2">Left</td>
+                    <td>ResNet-18</td>
+                    <td>0.080668 ± 0.041350</td>
+                  </tr>
+                  <tr>
+                    <td>ResNet-50</td>
+                    <td><strong>0.077170 ± 0.044088</strong></td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">Right</td>
+                    <td>ResNet-18</td>
+                    <td>0.102757 ± 0.054122</td>
+                  </tr>
+                  <tr>
+                    <td>ResNet-50</td>
+                    <td><strong>0.088437 ± 0.041912</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+              <img src="./static/images/pupilsense/lopocv_graphs.PNG">
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">
+                  Result of the mean absolute error (MAE) for leave one participant out cross validation (LOPOCV). The figure compare output of ResNet18 and ResNet50 on left eyes and right eyes datasets.
+                </span>
+              </h2>
+            </div>
+          </div>
+        </section>
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+              <img src="./static/images/pupilsense/cam_results.jpg">
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">
+                  Class Activation Map (CAM) visualizations of ResNet50 and ResNet18 for the left and right eyes of a test participant viewing different display colors on a monitor. True and Predicted values indicate the original and estimated pupil diameters of the left and right eyes in millimeters.
+                </span>
+              </h2>
+            </div>
+          </div>
+        </section>
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <h2 class="title is-3">WebApp - PupilSense</h2>
+            </div>
+            <div class="hero-body">
+              <img src="./static/images/pupilsense/webapp.PNG">
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">
+                  PupilSense: A web app for estimating and analyzing pupil diameters from everyday images and videos.[A]: Options to select
+                  either the left or right pupil for analysis (in blue) and to choose the classification models (in pink). [B]: Visualization of the input
+                  and output media, including CAM and estimated pupil diameters. [C]: Estimated pupil diameter values for each frame, analyzed by
+                  selected pupil type(s). [D]: EAR values for blink detection, with thresholds for acceptance of open eyes (in green) and rejection (in
+                  red). [E]: Consolidated data view showing pupil diameter values, EARs, and differences in pupil diameters, with a downloaded CSV
+                  file (bottom).
+                </span>
+              </h2>
+            </div>
+          </div>
+        </section>
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <h2 class="title is-3">Insights From User Experience</h2>
+            </div>
+            <div class="hero-body">
+              <img src="./static/images/pupilsense/survey.PNG">
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">
+                  The survey collected demographic (left) and user experience (right) information from 27 participants aged between 24 and 43,
+                  representing nationalities from India, Japan, Germany, Chile, and the Philippines. Among them, 19 participants identified as male,
+                  seven as female, and one as other. A majority of 24 participants were from computer science backgrounds, while three were from
+                  other fields. The group included 17 master's students, five professionals, three individuals in various roles, one PhD student, and
+                  one undergraduate student. Occupations include architects, business professionals, consultants, job seekers, and researchers. On
+                  average, participants rated their familiarity with pupil diameter analysis or eye-tracking technology at 2.3 out of 5, while their overall
+                  experience with the app was rated 4.1 out of 5.
+                </span>
+              </h2>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <hr/>
+    <div style="text-align: center; margin-bottom: 2%;">
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://vijulshah.github.io/pupilsense/">PupilSense</a> by <span property="cc:attributionName">Vijul Shah, Ko Watanabe, Brian Moser, and Prof. Dr. Andreas Dengel</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This website is licensed under a <a rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0
+                  International License</a>
+              </p>
+              <p>
+                This page was built using the <a
+                  href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page
+                  Template</a> which was adopted from the Nerfies project page. You are free to borrow the <a
+                  href="https://github.com/nerfies/nerfies.github.io">source code</a>, they just ask that you link back to
+                their page in the footer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</body>
+
+</html>
