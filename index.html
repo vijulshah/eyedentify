@@ -161,13 +161,69 @@ body, html {
         </div>
         </div>
         <!--/ Abstract. -->
+        
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+              <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Dataset Collection and Processing</h2>
+              </div>
+              <div class="hero-body is-centered has-text-centered">
+                <img src="./static/images/eyedentify/DatasetCollection-1.jpg" width="50%">
+                <h2 class="subtitle has-text-centered">
+                    <span class="dnerf">
+                      Figure 1. Data recording flow. Tobii eye-tracker records pupil diameter, and ChameleonView captures facial recordings using a webcam. Facial recordings start when the participant clicks on the button in the center. The start and end timestamp of the recording is collected in order to synchronize the data with an eye-tracker.
+                    </span>
+                </h2>
+              </div>
+              <div class="hero-body is-centered has-text-centered">
+                <img src="./static/images/eyedentify/alignment_flow-1.jpg" width="50%">
+                <h2 class="subtitle has-text-centered">
+                    <span class="dnerf">
+                      Figure 2. Data alignment flow of a single recording. To synchronize the 90 frames with the 270 Tobii-captured data points, each metric column is concatenated horizontally across the 90 data points from the three unique timestamps in the Tobii-captured CSV file, followed by computing a row-wise mean.
+                    </span>
+                </h2>
+              </div>
+              <div class="hero-body is-centered has-text-centered">
+                <img src="./static/images/eyedentify/PreprocessingFlowNew-1.jpg">
+                <h2 class="subtitle has-text-centered">
+                    <span class="dnerf">
+                      Figure 3. Pipeline of our data preprocessing. For face detection and landmark localization, we used Mediapipe to extract the respective cropped eye images (32x16), left and right, separately. Next, we applied blink detection on the cropped eyes using the Eye Aspect Ratio (EAR) and a pre-trained vision transformer for blink detection. Cropped eye images are then saved based on the EAR threshold and model confidence score.
+                    </span>
+                </h2>
+              </div>
+          </div>
+        </section>
+
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+              <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Dataset Statistics & Distribution</h2>
+              </div>
+              <div class="hero-body is-centered has-text-centered">
+                <img src="./static/images/eyedentify/all_session_blink_p6-1.jpg" width="70%">
+                <h2 class="subtitle has-text-centered">
+                    <span class="dnerf">
+                      Figure 4. Visualization of total frames vs. frames after pruning due to blink detection for one participant in all recording sessions (50 in total) as outlined in Section 3.4. Note that each recording takes a total of three seconds, which is why the impact of a blink and the amount of blinks can vary significantly (around 40 - 200 ms per blink).
+                    </span>
+                </h2>
+              </div>
+              <div class="hero-body is-centered has-text-centered">
+                <img src="./static/images/eyedentify/pd_distribution_p6-1.jpg" width="70%">
+                <h2 class="subtitle has-text-centered">
+                    <span class="dnerf">
+                      Figure 5. Pupil diameter distribution of one participant during the recordings. A set of different pupil diameter measurements and webcam images were captured during the different three-second long sessions (in total, 50 sessions). The colors of the boxes indicate the display color used during the recordings (white, black, red, blue, yellow, green, gray, and white again).                      
+                    </span>
+                </h2>
+              </div>
+          </div>
+        </section>
 
         <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
             <h2 class="title is-3">Datasets Comparision</h2>
             <table class="table2">
             <caption>Table 1. Comparison of related datasets for eye monitoring. While most datasets have gaze
-                coordinates [1, 2, 3, 4, 5, 6], there is a significant gap in pupil diameter informed [7, 8] datasets.
+                coordinates [<a href="https://openaccess.thecvf.com/content/WACV2024/html/Hong_Robust_Eye_Blink_Detection_Using_Dual_Embedding_Video_Vision_Transformer_WACV_2024_paper.html">1</a>, <a href="https://www.perceptualui.org/research/datasets/MPIIGaze/">2</a>, <a href="https://dl.acm.org/doi/10.1145/3649902.3653337">3</a>, <a href="https://gaze360.csail.mit.edu/">4</a>, <a href="https://ait.ethz.ch/xgaze">5</a>, <a href="https://ieeexplore.ieee.org/document/10484112">6</a>], there is a significant gap in pupil diameter informed [<a href="https://ieeexplore.ieee.org/document/9287588">7</a>, <a href="https://ieeexplore.ieee.org/document/10109280">8</a>] datasets.
             </caption>
             <thead>
                 <tr>
@@ -181,7 +237,7 @@ body, html {
             </thead>
             <tbody>
                 <tr>
-                <td>MAEB <a href="#">[1]</a></td>
+                <td>MAEB <a href="https://openaccess.thecvf.com/content/WACV2024/html/Hong_Robust_Eye_Blink_Detection_Using_Dual_Embedding_Video_Vision_Transformer_WACV_2024_paper.html">[1]</a></td>
                 <td>20</td>
                 <td>1,440</td>
                 <td class="color-red">✗</td>
@@ -189,7 +245,7 @@ body, html {
                 <td class="color-red">✗</td>
                 </tr>
                 <tr>
-                <td>MPIIFaceGaze <a href="#">[2]</a></td>
+                <td>MPIIFaceGaze <a href="https://www.perceptualui.org/research/datasets/MPIIGaze/">[2]</a></td>
                 <td>15</td>
                 <td>213,659</td>
                 <td class="color-green">✓</td>
@@ -197,7 +253,7 @@ body, html {
                 <td class="color-red">✗</td>
                 </tr>
                 <tr>
-                <td>Dembinsky et al. <a href="#">[3]</a></td>
+                <td>Dembinsky et al. <a href="https://dl.acm.org/doi/10.1145/3649902.3653337">[3]</a></td>
                 <td>19</td>
                 <td>648,000</td>
                 <td class="color-green">✓</td>
@@ -205,7 +261,7 @@ body, html {
                 <td class="color-red">✗</td>
                 </tr>
                 <tr>
-                <td>Gaze360 <a href="#">[4]</a></td>
+                <td>Gaze360 <a href="https://gaze360.csail.mit.edu/">[4]</a></td>
                 <td>238</td>
                 <td>172,000</td>
                 <td class="color-green">✓</td>
@@ -213,7 +269,7 @@ body, html {
                 <td class="color-red">✗</td>
                 </tr>
                 <tr>
-                <td>ETH-XGaze <a href="#">[5]</a></td>
+                <td>ETH-XGaze <a href="https://ait.ethz.ch/xgaze">[5]</a></td>
                 <td>110</td>
                 <td>1,083,492</td>
                 <td class="color-green">✓</td>
@@ -221,7 +277,7 @@ body, html {
                 <td class="color-red">✗</td>
                 </tr>
                 <tr>
-                <td>VideoGazeSpeech <a href="#">[6]</a></td>
+                <td>VideoGazeSpeech <a href="https://ieeexplore.ieee.org/document/10484112">[6]</a></td>
                 <td>unknown</td>
                 <td>35,231</td>
                 <td class="color-green">✓</td>
@@ -229,7 +285,7 @@ body, html {
                 <td class="color-red">✗</td>
                 </tr>
                 <tr>
-                <td>Ricciuti et al. <a href="#">[7]</a></td>
+                <td>Ricciuti et al. <a href="https://ieeexplore.ieee.org/document/9287588">[7]</a></td>
                 <td>17</td>
                 <td>20,400</td>
                 <td class="color-red">✗</td>
@@ -237,7 +293,7 @@ body, html {
                 <td class="color-green">✓</td>
                 </tr>
                 <tr>
-                <td>Caya et al. <a href="#">[8]</a></td>
+                <td>Caya et al. <a href="https://ieeexplore.ieee.org/document/10109280">[8]</a></td>
                 <td>16</td>
                 <td>unknown</td>
                 <td class="color-red">✗</td>
@@ -278,7 +334,7 @@ body, html {
                 </thead>
                 <tbody>
                 <tr>
-                    <td rowspan="2">Left</td>
+                    <td rowspan="2" style="text-align:center; vertical-align:middle;">Left</td>
                     <td>ResNet-18</td>
                     <td>0.0837 ± 0.0135</td>
                     <td><strong>0.1340 ± 0.0196</strong></td>
@@ -289,7 +345,7 @@ body, html {
                     <td>0.1426 ± 0.0167</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">Right</td>
+                    <td rowspan="2" style="text-align:center; vertical-align:middle;">Right</td>
                     <td>ResNet-18</td>
                     <td>0.1054 ± 0.0173</td>
                     <td><strong>0.1403 ± 0.0328</strong></td>
@@ -307,15 +363,12 @@ body, html {
 
         <section class="hero teaser">
         <div class="container is-max-desktop">
-            <div class="hero-body">
-            <!-- <video id="teaser" autoplay muted loop playsinline height="100%"> -->
-            <img src="./static/images/eyedentify/cam_results.jpg">
-            <!-- </video> -->
+            <div class="hero-body is-centered has-text-centered">
+            <img src="./static/images/eyedentify/cam_results.jpg" width="80%">
             <h2 class="subtitle has-text-centered">
-                <span class="dnerf">Figure 1. Class Activation Map (CAM) visualizations of ResNet50 and ResNet18 for a
-                test participant's left and right eyes viewing different display colors on a monitor. True and Predicted
-                values indicate the original and estimated pupil diameters of the left and right eyes in
-                millimeters.</span>
+                <span class="dnerf">
+                  Figure 6. Class Activation Map (CAM) visualizations of ResNet50 and ResNet18 for a test participant’s left and right eyes viewing different display colors on a monitor. True and Predicted values indicate the original and estimated pupil diameters of the left and right eyes in millimeters.
+                </span>
             </h2>
             </div>
         </div>
@@ -451,11 +504,11 @@ body, html {
             <div class="columns is-centered has-text-centered">
             <h2 class="title is-3">Dataset Processing</h2>
             </div>
-            <div class="hero-body">
-            <img src="./static/images/eyedentify++/sr_pdp.jpg">
+            <div class="hero-body is-centered has-text-centered">
+            <img src="./static/images/eyedentify++/sr_pdp.jpg" width="80%">
             <h2 class="subtitle has-text-centered">
                 <span class="dnerf">
-                Figure 1: Pipeline of our data preprocessing with image SR. As a first step, we super-resolve the raw data with a pre-defined scaling factor (here 2×). Next, we used Mediapipe to extract the respective cropped eye images (64×32), left and right, for face detection and landmark localization. Subsequently, we applied blink detection on the cropped eyes using the Eye Aspect Ratio (EAR) and a pre-trained vision transformer for blink detection, as described in EyeDentify (Shah et al., 2024). Cropped eye images are then saved based on the EAR threshold and model confidence score.
+                Figure 1: Pipeline of our data preprocessing with image SR. As a first step, we super-resolve the raw data with a pre-defined scaling factor (here 2×). Next, we used Mediapipe to extract the respective cropped eye images (64×32), left and right, for face detection and landmark localization. Subsequently, we applied blink detection on the cropped eyes using the Eye Aspect Ratio (EAR) and a pre-trained vision transformer for blink detection, as described in EyeDentify (<a href="https://arxiv.org/abs/2407.11204v1">Shah et al., 2024</a>). Cropped eye images are then saved based on the EAR threshold and model confidence score.
                 </span>
             </h2>
             </div>
@@ -467,8 +520,8 @@ body, html {
             <div class="columns is-centered has-text-centered">
             <h2 class="title is-3">SR Methods Comparision</h2>
             </div>
-            <div class="hero-body">
-            <img src="./static/images/eyedentify++/sr_comparision.jpg">
+            <div class="hero-body is-centered has-text-centered">
+            <img src="./static/images/eyedentify++/sr_comparision.jpg" width="80%">
             <h2 class="subtitle has-text-centered">
                 <span class="dnerf">
                 Figure 2: Comparison of applying image SR models on the cropped eye images versus applying them on the entire image. While the SR approximations on the entire image lead to results plausible to the respective input, the SR models applied to the cropped eye images lead to very distinct images. For instance, GFPGAN (left) produces unnatural pupils, whereas HAT (right) emits brightness shifts.
@@ -483,8 +536,8 @@ body, html {
             <div class="columns is-centered has-text-centered">
             <h2 class="title is-3">Datasets Comparision</h2>
             </div>
-            <div class="hero-body">
-            <img src="./static/images/eyedentify++/datasets_counts.png">
+            <div class="hero-body is-centered has-text-centered">
+            <img src="./static/images/eyedentify++/datasets_counts.png" width="80%">
             <h2 class="subtitle has-text-centered">
                 <span class="dnerf">
                 Figure 3: Comparison of applying pre-trained SR models on the EyeDentify Dataset.
@@ -690,8 +743,8 @@ body, html {
 
         <section class="hero teaser">
         <div class="container is-max-desktop">
-            <div class="hero-body">
-            <img src="./static/images/eyedentify++/Eye_Variation_DS.jpg">
+            <div class="hero-body is-centered has-text-centered">
+            <img src="./static/images/eyedentify++/Eye_Variation_DS.jpg" width="80%">
             <h2 class="subtitle has-text-centered">
                 <span class="dnerf">
                 Figure 4: Challenges in estimating pupil diameter without and with SR: Participants A, B, C show head movements and gaze shifts; Participant D shows eye size variation while smiling; Participants E, F, G, H experience different lighting effects—E in bright light, F with a yellow tint, G’s face appearing red, and H’s face appearing blue.
@@ -703,11 +756,11 @@ body, html {
 
         <section class="hero teaser">
         <div class="container is-max-desktop">
-            <div class="hero-body">
-            <img src="./static/images/eyedentify++/ResNetAll_CAM_Visualizations.jpg">
+            <div class="hero-body is-centered has-text-centered">
+            <img src="./static/images/eyedentify++/ResNetAll_CAM_Visualizations.jpg" width="80%">
             <h2 class="subtitle has-text-centered">
                 <span class="dnerf">
-                Figure 5: Class Activation Map (Zhou et al., 2016) visualizations for the final convolutional layer of ResNet18, ResNet50, and ResNet152 are shown for a test participant viewing the same display color with No-SR, SRx2, and SRx4 eye images. The true and predicted values represent the original and estimated pupil diameters of the left and right eyes in millimeters.
+                Figure 5: Class Activation Map (<a href="https://link.springer.com/article/10.1007/s11263-022-01646-0">Zhou et al., 2016</a>) visualizations for the final convolutional layer of ResNet18, ResNet50, and ResNet152 are shown for a test participant viewing the same display color with No-SR, SRx2, and SRx4 eye images. The true and predicted values represent the original and estimated pupil diameters of the left and right eyes in millimeters.
                 </span>
             </h2>
             </div>
